@@ -25,9 +25,10 @@ namespace AsyncAwait.Task2.CodeReviewChallenge.Controllers
             return View();
         }
 
-        public ActionResult Privacy()
+        //make method async in order to avoid deadlock
+        public async Task<ActionResult> Privacy()
         {
-            ViewBag.Message = _privacyDataService.GetPrivacyDataAsync().Result;
+            ViewBag.Message = await _privacyDataService.GetPrivacyDataAsync();
             return View();
         }
 
